@@ -2,25 +2,27 @@ import { useState } from "react";
 import { CompleteButton } from "./CompleteButton";
 import { DeleteButton } from "./DeleteButton";
 
-export const ToDoList = () => {
-  const input = document.getElementById("word");
-  const [arr, setArr] = useState(["例．花に水をやる",]);
+export const ToDoList = (props) => {
+  const [arr, setArr] = useState(["花に水をやる"]);
+  const [word, setWord] = useState("");
 
-  const onClickAdd = () => {
+
+  const onClickAdd = () => {    
+    const newWord = [...word];
+    newWord.push(setWord);
     const newArr = [...arr];
-    newArr.push(input.value);
+    newArr.push(newWord);
     setArr(newArr);
-  }
-  
+    };
+
 
   return (
     <div>
         <form>
-        <input type="text" id="word"/>        
+        <input type="text" onChange={(e) => setWord( e.target.value)} value= {word} />        
         <button onClick={onClickAdd}>やるで！</button>
-        {arr.map((val) => (<p>{val}< CompleteButton />
-        < DeleteButton /></p>))}
-        
+        {arr.map((val)=>(<li>{(val)}< CompleteButton />
+        < DeleteButton /></li>))} 
         </form>        
       </div>
     
