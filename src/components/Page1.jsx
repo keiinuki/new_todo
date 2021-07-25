@@ -21,7 +21,11 @@ export const Page1 = () => {
     <div>
     <Link to="/page1/detailA">「今からやること」を確認する</Link>
       <br />
-      <Link to="/page2/detailB">「もう終わったこと」を確認する</Link>
+      <Link to="/page1/detailB">「もう終わったこと」を確認する</Link>
+      <br />
+      <br />
+      <br />
+      <Link to="/">TOPへ</Link>      
     </div>
   </div>
   );

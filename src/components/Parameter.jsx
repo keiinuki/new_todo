@@ -10,7 +10,11 @@ export const Parameter = () => {
       <h1>ここにパラメータが遷移されます</h1>
       <p>id:{id}</p>
       <p>name:{query.get("name")}</p>
-      <Link to="/page2">使い方へ</Link>
+      <br />
+      <Link to="/page2">「使い方」に戻る</Link>
+      <br />
+      <br />
+      <Link to="/">TOPへ</Link>
     </div>
   );
 };

@@ -12,6 +12,10 @@ export const Page2 = () => {
       </div>
       <div>
     <Link to="/page2/:id">パラメーター画面へ</Link>
+      <br />
+      <br />
+      <br />
+      <Link to="/">TOPへ</Link>
       </div>
     </div>
   );
