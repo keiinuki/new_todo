@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Page1DetailB = () => {
+export const Page1DetailB = (props) => {
   return (
     <div>
       <h1>もう終わったこと</h1>

@@ -2,7 +2,8 @@ import React from "react";
 import { ToDoList } from './ToDoList';
 import { Link } from "react-router-dom";
 
-export const Page1 = () => {
+export const Page1 = (props) => {
+  
   const containerstyle = {
     border: "solid 1px #ddd",
     textAlign: "center",

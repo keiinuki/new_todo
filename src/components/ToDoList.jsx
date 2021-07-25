@@ -5,7 +5,7 @@ export const ToDoList = (props) =>{
   const [arr, setArr] = useState([]);
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);
-
+  
     const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];
@@ -60,9 +60,9 @@ export const ToDoList = (props) =>{
           setWord( e.target.value)
           console.log(e)
           }} value= {word} placeholder="何やるか決めた？"/>        
-        <button onClick={onClickAdd}>やるで！</button>
+        <button onClick={onClickAdd} >やるで！</button>
         <li>例）花に水をやる</li>
-        {arr.map((val,i)=>(<li>{(val)} <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>))} 
+        {arr.map((val,i)=>(<li>{(val)} <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
         
         </form>     
         </div>
