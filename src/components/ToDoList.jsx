@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 export const ToDoList = (props) =>{
-  const [arr, setArr] = useState(["例）花に水をやる"]);
+  const [arr, setArr] = useState([]);
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);
 
@@ -12,6 +12,7 @@ export const ToDoList = (props) =>{
     newArr.push(word);
     setArr(newArr);
     setWord("");
+    alert("やることにしたで！");
     };
 
     const onClickDelete =(e,i) => {
@@ -20,7 +21,7 @@ export const ToDoList = (props) =>{
       const newArr = [...arr];
       newArr.splice(i,1);
       setArr(newArr);
-      console.log(i);
+      alert("やっぱりやめるわ．．．");
     };
 
     const onClickComplete =(e,i) => {
@@ -30,6 +31,7 @@ export const ToDoList = (props) =>{
       const newCompleteTodo = [...completeTodo, arr[i]];
       setArr(newArr);
       setCompleteTodo(newCompleteTodo);
+      alert("やったった！");
     };
   
     const onClickBack =(e,i) => {
@@ -39,6 +41,7 @@ export const ToDoList = (props) =>{
       const newArr = [...arr, completeTodo[i]];      
       setCompleteTodo(newCompleteTodo);
       setArr(newArr);
+      alert("あかん！やり直しや．．．");
     };
     
     const competeStyle= {
@@ -56,9 +59,10 @@ export const ToDoList = (props) =>{
         <input type="text" onChange={(e) => {
           setWord( e.target.value)
           console.log(e)
-          }} value= {word} />        
+          }} value= {word} placeholder="何やるか決めた？"/>        
         <button onClick={onClickAdd}>やるで！</button>
-        {arr.map((val,i)=>(<li>{(val)} <button  onClick={(e) => onClickDelete(e,i)} >消すで！</button><button onClick={(e) => onClickComplete(e,i)}>やったで！</button></li>))} 
+        <li>例）花に水をやる</li>
+        {arr.map((val,i)=>(<li>{(val)} <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>))} 
         
         </form>     
         </div>
