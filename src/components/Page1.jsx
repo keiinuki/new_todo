@@ -8,6 +8,8 @@ export const Page1 = () => {
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
   
+  localStorage.setItem("arr","val");
+
     const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];

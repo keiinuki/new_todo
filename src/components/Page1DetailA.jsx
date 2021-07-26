@@ -12,8 +12,18 @@ export const Page1DetailA = () => {
     }
   },[state]);
 
+  const containerstyle = {
+    border: "solid 1px #ddd",
+    textAlign: "center",
+    padding: "auto",
+    backgroundColor: "#ddd",
+    width: "600px",
+    height: "auto",
+    margin: "auto"
+  }
+
   return (
-    <div>
+    <div style={containerstyle}>
       <h1>今からやること</h1>
       <br/>
       <li>{ arr }</li>

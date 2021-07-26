@@ -2,8 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const Page2 = () => {
+  const containerstyle = {
+    border: "solid 1px #ddd",
+    textAlign: "center",
+    padding: "auto",
+    backgroundColor: "#ddd",
+    width: "600px",
+    height: "auto",
+    margin: "auto"
+  }
+
   return (
-    <div>
+    <div style={containerstyle}>
       <h1>使い方</h1>
       <div>
         <input type="text" ></input>

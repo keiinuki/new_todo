@@ -12,8 +12,18 @@ export const Page1DetailB = () => {
     }
   },[state]);
 
+  const containerstyle = {
+    border: "solid 1px #ddd",
+    textAlign: "center",
+    padding: "auto",
+    backgroundColor: "#ddd",
+    width: "600px",
+    height: "auto",
+    margin: "auto"
+  }
+
   return (
-    <div>
+    <div style={containerstyle}>
       <h1>もう終わったこと</h1>
       <br />
       <li>{ completeTodo }</li>
