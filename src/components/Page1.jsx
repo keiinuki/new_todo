@@ -10,7 +10,7 @@ export const Page1 = () => {
   
   useEffect(() => {
     if (state.arr) {            
-      setCompleteTodo(state.arr);
+      setArr(state.arr);
     } else if (state.completeTodo){
       setCompleteTodo(state.completeTodo);
     }
