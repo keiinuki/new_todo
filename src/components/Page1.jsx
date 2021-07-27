@@ -1,14 +1,21 @@
 import React from "react";
-//import { ToDoList } from './ToDoList';
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export const Page1 = () => {
+  const { state } = useLocation();
   const [arr, setArr] = useState([]);
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
   
-  localStorage.setItem("arr","val");
+  useEffect(() => {
+    if (state.arr) {            
+      setCompleteTodo(state.arr);
+    } else if (state.completeTodo){
+      setCompleteTodo(state.completeTodo);
+    }
+  },[state]);
+  
 
     const onClickAdd = (e) => {
     e.preventDefault()        
@@ -77,8 +84,7 @@ export const Page1 = () => {
           }} value= {word} placeholder="何やるか決めた？"/>        
         <button onClick={onClickAdd} >やるで！</button>
         <li>例）花に水をやる</li>
-        {arr.map((val,i)=>(<li>{(val)} <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
-        
+        {arr.map((val,i)=>(<li> {(val) } <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
         </form>     
         </div>
         <div className="complereArea">
@@ -91,7 +97,7 @@ export const Page1 = () => {
     <div>
     <Link to={{ pathname:"/page1/detailA", state: { arr } }}>「今からやること」を確認する</Link>
       <br />
-      <Link to={{ pathname:"/page1/detailB", state:{ completeTodo } }}>「もう終わったこと」を確認する</Link>
+      <Link to={{ pathname:"/page1/detailB", state: { completeTodo } }}>「もう終わったこと」を確認する</Link>
       <br />
       <br />
       <br />

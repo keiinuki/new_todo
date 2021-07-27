@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 export const Page1DetailB = () => {
   const { state } = useLocation();
-  const [completeTodo, setCompleteTodo] = useState();
+  const [completeTodo, setCompleteTodo] = useState([]);
   console.log(completeTodo);
   useEffect(() => {
     if (state) {
@@ -28,7 +28,7 @@ export const Page1DetailB = () => {
       <br />
       <li>{ completeTodo }</li>
       <br />
-      <Link to="/page1">「やらなあかんこと」に戻る</Link>
+      <Link to={{ pathname:"/page1", state: { completeTodo } }}>「やらなあかんこと」に戻る</Link>
       <br />      
       <br />
       <Link to="/">TOPへ</Link>
