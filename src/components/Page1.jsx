@@ -9,13 +9,13 @@ export const Page1 = () => {
   const [completeTodo, setCompleteTodo] = useState([]);  
   
   useEffect(() => {
-    if (state) {            
-      setArr(state.arr);
+    if (state.arr) {            
+      setArr(state.arr);      
+    } else if (state.completeTodo) {
       setCompleteTodo(state.completeTodo);
     }
   },[state]);
   
-
     const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];
@@ -72,8 +72,8 @@ export const Page1 = () => {
   <div style={containerstyle}>
     <h1>やらなあかんこと</h1>
     <div>
-    <div className="inCompleteArea">
-        <p className="area1">
+    <div>
+        <p>
           <h2>今からやるで！</h2>
           </p>
         <form>
@@ -86,11 +86,11 @@ export const Page1 = () => {
         {arr.map((val,i)=>(<li> {(val) } { arr } <button onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
         </form>     
         </div>
-        <div className="complereArea">
-          <p classname="area2">
+        <div>
+          <p>
             <h2>もう終わったで！</h2>
             </p>
-        {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} { completeTodo }<button onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
+        {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} { completeTodo } <button onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
         </div>         
     </div>
     <div>

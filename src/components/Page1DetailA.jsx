@@ -10,7 +10,7 @@ export const Page1DetailA = () => {
   useEffect(() => {
     if (state) {
       setArr(state.arr);      
-    }
+    } 
   },[state]);
 
   const containerstyle = {
