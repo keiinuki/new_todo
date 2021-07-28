@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 export const Page1DetailA = () => {  
   const { state } = useLocation();
   const [arr, setArr] = useState([]);
+
+
   console.log(...arr);
 
   useEffect(() => {
