@@ -8,14 +8,6 @@ export const Page1 = () => {
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
   
-  useEffect(() => {
-    if (state.arr) {          
-      setArr(state.arr);      
-    } else  if (state.completeTodo) {
-      setCompleteTodo(state.completeTodo);
-    }
-  },[state]);
-  
     const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];
@@ -66,6 +58,16 @@ export const Page1 = () => {
     height: "auto",
     margin: "auto"
   }
+
+  useEffect(() => {
+    if (state) {          
+      setArr(state.arr);    
+      console.log(state);  
+    } else  if (state) {
+      setCompleteTodo(state.completeTodo);
+    }
+  },[state]);
+  
 
 
   return (

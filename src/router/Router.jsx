@@ -5,6 +5,7 @@ import { Page2 } from "../components/Page2";
 import { Page1DetailA } from "../components/Page1DetailA";
 import { Page1DetailB } from "../components/Page1DetailB";
 import { Parameter } from "../components/Parameter";
+import { Page404 } from "../components/Page404";
 
 export const Router = () => {
   return (
@@ -25,6 +26,9 @@ export const Router = () => {
             <Route path={`${url}/detailB`}>
               <Page1DetailB />
             </Route>
+            <Route path={`${url}/*`}>
+              <Page404 />
+            </Route>
           </Switch>
           )}
       ></Route>
@@ -38,9 +42,15 @@ export const Router = () => {
             <Route path={`${url}/:id`}>
               <Parameter />
             </Route>
+            <Route path={`${url}/*`}>
+              <Page404 />
+            </Route>
           </Switch>
         )}
       ></Route>
+      <Route path="/*">
+        <Page404 />
+      </Route>
     </Switch>
   );
 };
