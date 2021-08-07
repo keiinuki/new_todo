@@ -8,5 +8,5 @@ export const BackButton = memo((props) => {
     history.push("/");
   };
 
-  return <button onClick={onClick} >TOPページに戻るで！</button>
+  return <button onClick={onClick} style={{ color: props.color }} >TOPページに戻るで！</button>
 });

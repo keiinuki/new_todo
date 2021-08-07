@@ -35,7 +35,7 @@ export const Page1DetailA = () => {
       <Link to={{ pathname:"/page1", state: { arr } }}>「やらなあかんこと」に戻る</Link>
       <br />
       <br />
-      <BackButton />
+      <BackButton color="green" />
     </div>
   );
 };

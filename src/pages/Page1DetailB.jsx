@@ -32,7 +32,7 @@ export const Page1DetailB = () => {
       <Link to={{ pathname:"/page1", state: { completeTodo } }}>「やらなあかんこと」に戻る</Link>
       <br />      
       <br />
-      <BackButton />
+      <BackButton color="blue" />
     </div>
   );
 };
