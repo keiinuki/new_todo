@@ -1,11 +1,11 @@
 import { Route, Switch } from "react-router-dom";
-import { Home } from "../components/Home";
-import { Page1 } from "../components/Page1";
-import { Page2 } from "../components/Page2";
-import { Page1DetailA } from "../components/Page1DetailA";
-import { Page1DetailB } from "../components/Page1DetailB";
-import { Parameter } from "../components/Parameter";
-import { Page404 } from "../components/Page404";
+import { Home } from "../pages/Home";
+import { Page1 } from "../pages/Page1";
+import { Page2 } from "../pages/Page2";
+import { Page1DetailA } from "../pages/Page1DetailA";
+import { Page1DetailB } from "../pages/Page1DetailB";
+import { Parameter } from "../pages/Parameter";
+import { Page404 } from "../pages/Page404";
 
 export const Router = () => {
   return (

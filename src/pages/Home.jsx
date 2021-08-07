@@ -21,7 +21,7 @@ export const Home = () => {
       <h1>やらなあかんこと　ＨＯＭＥ</h1>
       <Link to="/page1">「やらなあかんこと」はこちら</Link>
       <br />
-      <Link to="/page2">「使い方」はこちら</Link>
+      <Link to="/page2">「登録してな」はこちら</Link>
       <br/>
       <button onClick={onClick}>Page2へ移動</button>
     </div>
