@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BackButton } from "../components/BackButton";
 
 export const Page404 = () => {
   const containerstyle = {
@@ -15,7 +15,7 @@ export const Page404 = () => {
     <div style={containerstyle}>
       <h1>ページが見つからへんねん</h1>
       <br />
-      <Link to="/">TOPへ</Link> 
+      <BackButton />
     </div>
   )
 };

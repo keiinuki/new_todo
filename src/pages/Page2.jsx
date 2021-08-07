@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import { Message } from "../components/Message"
 import { useCallback } from "react"
+import { BackButton } from "../components/BackButton";
 
 export const Page2 = () => {
   const containerstyle = {
@@ -23,6 +24,9 @@ export const Page2 = () => {
   console.log(id);  
   },[name, id]);
 
+  
+
+
   return (
     <div style={containerstyle}>
       <h1>登録してな</h1>
@@ -41,7 +45,7 @@ export const Page2 = () => {
       <br />
       <br />
       <br />
-      <Link to="/">TOPへ</Link>
+      <BackButton />
       </div>
     </div>
   );

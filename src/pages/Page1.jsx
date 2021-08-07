@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { BackButton } from "../components/BackButton";
 
 export const Page1 = () => {
   const { state } = useLocation();
@@ -102,7 +103,7 @@ export const Page1 = () => {
       <br />
       <br />
       <br />
-      <Link to="/">TOPへ</Link>      
+      <BackButton />    
     </div>
   </div>
   );

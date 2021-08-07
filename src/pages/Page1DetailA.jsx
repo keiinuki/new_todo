@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { BackButton } from "../components/BackButton";
 
 export const Page1DetailA = () => {  
   const { state } = useLocation();
@@ -34,7 +35,7 @@ export const Page1DetailA = () => {
       <Link to={{ pathname:"/page1", state: { arr } }}>「やらなあかんこと」に戻る</Link>
       <br />
       <br />
-      <Link to="/">TOPへ</Link> 
+      <BackButton />
     </div>
   );
 };

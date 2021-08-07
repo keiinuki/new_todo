@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams, useLocation }  from "react-router-dom";
+import { BackButton } from "../components/BackButton";
 
 export const Parameter = () => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export const Parameter = () => {
       <Link to="/page2">「使い方」に戻る</Link>
       <br />
       <br />
-      <Link to="/">TOPへ</Link>
+      <BackButton />
     </div>
   );
 };
