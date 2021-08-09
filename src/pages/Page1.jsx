@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BackButton } from "../components/BackButton";
+import './PagesStyle.css';
 
 export const Page1 = () => {
   const { state } = useLocation();
@@ -50,14 +51,29 @@ export const Page1 = () => {
     const competeStyle= {
       textDecoration:"line-through red" 
     }
-  const containerstyle = {
-    border: "solid 1px #ddd",
-    textAlign: "center",
+  //const containerStyle = {
+    //border: "solid 1px #ddd",
+    //textAlign: "center",
+    //padding: "auto",
+    //backgroundColor: "#ddd",
+    //width: "600px",
+    //height: "auto",
+    //margin: "auto"
+  //}
+
+  const olStyle = {
+    listStylePosition: "inside",
+    listStyleType: "cjk-ideographic",
+    width: "60%",
+    textAlign: "justify",
     padding: "auto",
-    backgroundColor: "#ddd",
-    width: "600px",
-    height: "auto",
     margin: "auto"
+  }
+
+  const buttonStyle = {
+    padding: "auto",
+    margin: "2px",
+    justifyContent: "float-right"
   }
 
   useEffect(() => {
@@ -72,29 +88,32 @@ export const Page1 = () => {
 
 
   return (
-  <div style={containerstyle}>
+  <div className="container-style">
     <h1>やらなあかんこと</h1>
     <div>
-    <div>
-        <p>
-          <h2>今からやるで！</h2>
-          </p>
+      <div>        
+        <h2>今からやるで！</h2>        
         <form>
-        <input type="text" onChange={(e) => {
-          setWord( e.target.value)
-          console.log(e)
+          <input type="text" onChange={(e) => {
+            setWord( e.target.value)
+            console.log(e)
           }} value= {word} placeholder="何やるか決めた？"/>        
-        <button onClick={onClickAdd} >やるで！</button>
-        <li>例）花に水をやる</li>
-        {arr.map((val,i)=>(<li> {(val) } <button  onClick={(e) => onClickComplete(e,i)}>やったで！</button><button  onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
-        </form>     
-        </div>
-        <div>
-          <p>
-            <h2>もう終わったで！</h2>
-            </p>
-        {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} <button onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
-        </div>         
+          <button style={buttonStyle} onClick={onClickAdd} >やるで！</button>
+        </form>
+        <div>          
+            <li>例）花に水をやる</li>
+          <ol style= {olStyle}>
+            {arr.map((val,i)=>(<li> {(val) } <button style={buttonStyle} onClick={(e) => onClickComplete(e,i)}>やったで！</button><button style={buttonStyle} onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
+          </ol>
+        </div>     
+      </div>
+        
+      <div>          
+          <h2>もう終わったで！</h2>          
+          <ol style= {olStyle}>
+        {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} <button style={buttonStyle} onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
+        </ol>
+      </div>             
     </div>
     <div>
     <Link to={{ pathname:"/page1/detailA", state: { arr } }}>「今からやること」を確認する</Link>

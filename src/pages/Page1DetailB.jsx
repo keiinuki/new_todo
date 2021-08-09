@@ -26,8 +26,8 @@ export const Page1DetailB = () => {
   return (
     <div style={containerstyle}>
       <h1>もう終わったこと</h1>
-      <br />
-      <li>{ completeTodo }</li>
+      <br />      
+      {completeTodo.map((val)=>(<li> {(val) } </li>)) }
       <br />
       <Link to={{ pathname:"/page1", state: { completeTodo } }}>「やらなあかんこと」に戻る</Link>
       <br />      

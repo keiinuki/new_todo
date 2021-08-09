@@ -6,10 +6,7 @@ import { BackButton } from "../components/BackButton";
 export const Page1DetailA = () => {  
   const { state } = useLocation();
   const [arr, setArr] = useState([]);
-
-
   console.log(...arr);
-
   useEffect(() => {
     if (state) {
       setArr(state.arr);      
@@ -30,7 +27,7 @@ export const Page1DetailA = () => {
     <div style={containerstyle}>
       <h1>今からやること</h1>
       <br/>      
-      <li>{ arr }</li>
+      {arr.map((val)=>(<li> {(val) } </li>)) }
       <br />
       <Link to={{ pathname:"/page1", state: { arr } }}>「やらなあかんこと」に戻る</Link>
       <br />

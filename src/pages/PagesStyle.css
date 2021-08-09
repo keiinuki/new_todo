@@ -1,0 +1,9 @@
+.container-style {
+  border: solid 1px #ddd;
+  text-align: center;
+  padding: auto;
+  background-color: rgb(182, 250, 165);
+  width: 600px;
+  height: auto;
+  margin: auto;
+}

@@ -23,7 +23,7 @@ export const Parameter = () => {
       <p>id:{id}</p>
       <p>name:{query.get("name")}</p>
       <br />
-      <Link to="/page2">「使い方」に戻る</Link>
+      <Link to="/page2">「登録してな」に戻る</Link>
       <br />
       <br />
       <BackButton />
