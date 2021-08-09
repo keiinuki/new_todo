@@ -68,10 +68,10 @@ export const Page1 = () => {
   }
 
   useEffect(() => {
-    if (state.arr) {          
+    if (state) {          
       setArr(state.arr);    
       console.log(state);  
-    } if (state.completeTodo) {
+    } if (state) {
       setCompleteTodo(state.completeTodo);
     }
   },[state]);
