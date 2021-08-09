@@ -103,7 +103,7 @@ export const Page1 = () => {
         <div>          
             <li>例）花に水をやる</li>
           <ol style= {olStyle}>
-            {arr.map((val,i)=>(<li> {(val) } <button style={buttonStyle} onClick={(e) => onClickComplete(e,i)}>やったで！</button><button style={buttonStyle} onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
+            {arr.map((val,i)=>(<li> {(val)} <button style={buttonStyle} onClick={(e) => onClickComplete(e,i)}>やったで！</button><button style={buttonStyle} onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
           </ol>
         </div>     
       </div>
