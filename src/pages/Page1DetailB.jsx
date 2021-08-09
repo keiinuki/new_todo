@@ -18,11 +18,22 @@ export const Page1DetailB = () => {
     }
   },[state]);
 
+  const olStyle = {
+    listStylePosition: "inside",
+    listStyleType: "cjk-ideographic",
+    width: "40%",
+    textAlign: "justify",
+    padding: "auto",
+    margin: "auto"
+  }
+
   return (
     <div className="container-style">
       <h1>もう終わったこと</h1>
-      <br />      
+      <br />
+      <ol style= {olStyle}>      
       {completeTodo.map((val)=>(<li> {(val) } </li>)) }
+      </ol>
       <br />
       <Link to={{ pathname:"/page1", state: { arr, completeTodo } }}>「やらなあかんこと」に戻る</Link>
       <br />      

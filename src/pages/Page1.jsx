@@ -97,7 +97,8 @@ export const Page1 = () => {
         </div>     
       </div>
         
-      <div>          
+      <div>
+        <br />          
           <h2>もう終わったで！</h2>          
           <ol style= {olStyle}>
         {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} <button style={buttonStyle} onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
@@ -105,6 +106,8 @@ export const Page1 = () => {
       </div>             
     </div>
     <div>
+      <br />
+      <br />
     <Link to={{ pathname:"/page1/detailA", state: { arr, completeTodo } }}>「今からやること」を確認する</Link>
       <br />
       <Link to={{ pathname:"/page1/detailB", state: { arr, completeTodo } }}>「もう終わったこと」を確認する</Link>

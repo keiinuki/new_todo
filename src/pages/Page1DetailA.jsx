@@ -14,16 +14,27 @@ export const Page1DetailA = () => {
   useEffect(() => {
     if (state.arr) {
       setArr(state.arr);      
-    }  if (state.completeTodo) {
+    } if (state.completeTodo) {
       setCompleteTodo(state.completeTodo);
     }
   },[state]);
-  
+
+  const olStyle = {
+    listStylePosition: "inside",
+    listStyleType: "cjk-ideographic",
+    width: "40%",
+    textAlign: "justify",
+    padding: "auto",
+    margin: "auto"
+  }
+
   return (
     <div className="container-style">
       <h1>今からやること</h1>
-      <br/>      
+      <br/>
+      <ol style= {olStyle}>      
       {arr.map((val)=>(<li> {(val) } </li>)) }
+      </ol>
       <br />
       
       <Link to={{ pathname:"/page1", state: { arr, completeTodo } }}>「やらなあかんこと」に戻る</Link>
