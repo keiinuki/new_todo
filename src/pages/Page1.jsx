@@ -10,56 +10,47 @@ export const Page1 = () => {
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
   
-    const onClickAdd = (e) => {
+  const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];
     newArr.push(word);
     setArr(newArr);
     setWord("");
     alert("やることにしたで！");
-    };
+  };
 
-    const onClickDelete =(e,i) => {
-      console.log(e)
-      e.preventDefault();    
-      const newArr = [...arr];
-      newArr.splice(i,1);
-      setArr(newArr);
-      alert("やっぱりやめるわ．．．");
-    };
+  const onClickDelete =(e,i) => {
+    console.log(e)
+    e.preventDefault();    
+    const newArr = [...arr];
+    newArr.splice(i,1);
+    setArr(newArr);
+    alert("やっぱりやめるわ．．．");
+  };
 
-    const onClickComplete =(e,i) => {
-      e.preventDefault();
-      const newArr = [...arr];
-      newArr.splice(i,1);
-      const newCompleteTodo = [...completeTodo, arr[i]];
-      setArr(newArr);
-      setCompleteTodo(newCompleteTodo);
-      alert("やったった！");
-    };
+  const onClickComplete =(e,i) => {
+    e.preventDefault();
+    const newArr = [...arr];
+    newArr.splice(i,1);
+    const newCompleteTodo = [...completeTodo, arr[i]];
+    setArr(newArr);
+    setCompleteTodo(newCompleteTodo);
+    alert("やったった！");
+  };
   
-    const onClickBack =(e,i) => {
-      e.preventDefault();
-      const newCompleteTodo = [...completeTodo];
-      newCompleteTodo.splice(i,1);
-      const newArr = [...arr, completeTodo[i]];      
-      setCompleteTodo(newCompleteTodo);
-      setArr(newArr);
-      alert("あかん！やり直しや．．．");
-    };
+  const onClickBack =(e,i) => {
+    e.preventDefault();
+    const newCompleteTodo = [...completeTodo];
+    newCompleteTodo.splice(i,1);
+    const newArr = [...arr, completeTodo[i]];      
+    setCompleteTodo(newCompleteTodo);
+    setArr(newArr);
+    alert("あかん！やり直しや．．．");
+  };
     
-    const competeStyle= {
-      textDecoration:"line-through red" 
-    }
-  //const containerStyle = {
-    //border: "solid 1px #ddd",
-    //textAlign: "center",
-    //padding: "auto",
-    //backgroundColor: "#ddd",
-    //width: "600px",
-    //height: "auto",
-    //margin: "auto"
-  //}
+  const competeStyle= {
+    textDecoration:"line-through red" 
+  }
 
   const olStyle = {
     listStylePosition: "inside",
@@ -77,15 +68,13 @@ export const Page1 = () => {
   }
 
   useEffect(() => {
-    if (state) {          
+    if (state.arr) {          
       setArr(state.arr);    
       console.log(state);  
-    } else  if (state) {
+    } if (state.completeTodo) {
       setCompleteTodo(state.completeTodo);
     }
   },[state]);
-  
-
 
   return (
   <div className="container-style">
@@ -116,9 +105,9 @@ export const Page1 = () => {
       </div>             
     </div>
     <div>
-    <Link to={{ pathname:"/page1/detailA", state: { arr } }}>「今からやること」を確認する</Link>
+    <Link to={{ pathname:"/page1/detailA", state: { arr, completeTodo } }}>「今からやること」を確認する</Link>
       <br />
-      <Link to={{ pathname:"/page1/detailB", state: { completeTodo } }}>「もう終わったこと」を確認する</Link>
+      <Link to={{ pathname:"/page1/detailB", state: { arr, completeTodo } }}>「もう終わったこと」を確認する</Link>
       <br />
       <br />
       <br />
