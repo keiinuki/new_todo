@@ -1,15 +1,26 @@
 import React from "react";
+import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BackButton } from "../components/BackButton";
-import './PagesStyle.css';
 
 export const Page1 = () => {
   const { state } = useLocation();
   const [arr, setArr] = useState([]);
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
-  
+  const url = "https://jsonplaceholder.typicode.com/todos/29/";
+
+  useEffect(() => {
+    axios.get(url)
+    .then((response) => {      
+      const newArr = [...arr]
+      newArr.push(response.data.title)
+      setArr(newArr)
+      console.log(response);    
+    });    
+  },[]);
+
   const onClickAdd = (e) => {
     e.preventDefault()        
     const newArr = [...arr];
@@ -75,6 +86,8 @@ export const Page1 = () => {
       setCompleteTodo(state.completeTodo);
     }
   },[state]);
+  
+  
 
   return (
   <div className="container-style">

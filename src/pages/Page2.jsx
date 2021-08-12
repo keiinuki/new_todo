@@ -4,19 +4,24 @@ import { Link } from "react-router-dom";
 import { Message } from "../components/Message"
 import { useCallback } from "react"
 import { BackButton } from "../components/BackButton";
+import { useEffect } from "react";
 
 export const Page2 = () => {
-  const containerstyle = {
-    border: "solid 1px #ddd",
-    textAlign: "center",
-    padding: "auto",
-    backgroundColor: "#ddd",
-    width: "600px",
-    height: "auto",
-    margin: "auto"
-  };
+
+  const url = "https://jsonplaceholder.typicode.com/todos/3/";  
+  useEffect(() => {
+    fetch(url)
+    .then((response) => {
+      console.log("レスポンス", response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log("JSON", json);
+    });
+  },[]);
+
   const [name, setName] = useState("");
-  const [id, setId] = useState("");
+  const [id, setId] = useState("");  
   const onChangeName = (e) => setName(e.target.value);
   const onChangeId = (e) => setId(e.target.value);
   const onClick = useCallback(() => {
@@ -25,10 +30,8 @@ export const Page2 = () => {
   },[name, id]);
 
   
-
-
   return (
-    <div style={containerstyle}>
+    <div className="container-style">
       <h1>登録してな</h1>
       <Message color="green" />
       <div>
@@ -39,7 +42,7 @@ export const Page2 = () => {
         <input value={id} onChange={onChangeId} />
         <button onClick={onClick}>ボタン</button>
       </div>
-      <div>{name}  {id}</div>
+      <div>{name}  {id}</div>      
       <div>
     <Link to="/page2/:id?name=name">パラメーター画面へ</Link>
       <br />
