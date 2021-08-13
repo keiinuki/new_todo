@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Message } from "../components/Message"
 import { BackButton } from "../components/BackButton";
 
+
 export const Page2 = () => {
   const url = "https://jsonplaceholder.typicode.com/todos/3/";  
   useEffect(() => {
@@ -16,10 +17,13 @@ export const Page2 = () => {
     });
   },[]);
 
+  
+
   const [name, setName] = useState("");
   const [id, setId] = useState("");  
   const onChangeName = (e) => setName(e.target.value);
   const onChangeId = (e) => setId(e.target.value);
+
   const onClick = useCallback(() => {
   console.log(name);
   console.log(id);  
@@ -31,14 +35,14 @@ export const Page2 = () => {
       <h1>登録してな</h1>
       <Message color="green" />
       <div>
-        <label>名前</label>
+        <label>名前:</label>
         <input value={name} onChange={onChangeName} /> 
         <br/>
         <label>ID</label>
         <input value={id} onChange={onChangeId} />
         <button onClick={onClick}>ボタン</button>
       </div>
-      <div>{name}  {id}</div>      
+      <div>{name}  {id}</div>        
       <div>
     <Link to="/page2/:id?name=name">パラメーター画面へ</Link>
       <br />

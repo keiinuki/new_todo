@@ -1,8 +1,8 @@
-//import React from "react";
 import { Link, useParams, useLocation }  from "react-router-dom";
 import { BackButton } from "../components/BackButton";
 import axios from "axios";
 import { useEffect } from "react";
+import { ContextComponent } from "../components/ContextComponent";
 
 export const Parameter = () => {
   const { id } = useParams();
@@ -23,6 +23,7 @@ export const Parameter = () => {
       <h1>ここにパラメータが遷移されます</h1>
       <p>id:{id}</p>
       <p>name:{query.get("name")}</p>
+      <div><ContextComponent /></div> 
       <br />
       <Link to="/page2">「登録してな」に戻る</Link>
       <br />
