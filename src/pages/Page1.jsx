@@ -1,7 +1,6 @@
-import React from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { BackButton } from "../components/BackButton";
 
 export const Page1 = () => {
@@ -9,37 +8,36 @@ export const Page1 = () => {
   const [arr, setArr] = useState([]);
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
-  const url = "https://jsonplaceholder.typicode.com/todos/29/";
 
   useEffect(() => {
-    axios.get(url)
+    axios.get("https://jsonplaceholder.typicode.com/todos/29/")
     .then((response) => {      
-      const newArr = [...arr]
-      newArr.push(response.data.title)
-      setArr(newArr)
-      console.log(response);    
+  //    const newArr = [...arr]
+      setArr(response.data.title)
+  //    setArr(newArr)      
+  //    console.log(response);    
     });    
   },[]);
 
-  const onClickAdd = (e) => {
+  const onClickAdd = useCallback((e) => {
     e.preventDefault()        
     const newArr = [...arr];
     newArr.push(word);
     setArr(newArr);
     setWord("");
     alert("やることにしたで！");
-  };
+  },[arr,word]);
 
-  const onClickDelete =(e,i) => {
+  const onClickDelete = useCallback((e,i) => {
     console.log(e)
     e.preventDefault();    
     const newArr = [...arr];
     newArr.splice(i,1);
     setArr(newArr);
     alert("やっぱりやめるわ．．．");
-  };
+  },[arr]);
 
-  const onClickComplete =(e,i) => {
+  const onClickComplete = useCallback((e,i) => {
     e.preventDefault();
     const newArr = [...arr];
     newArr.splice(i,1);
@@ -47,9 +45,9 @@ export const Page1 = () => {
     setArr(newArr);
     setCompleteTodo(newCompleteTodo);
     alert("やったった！");
-  };
+  },[arr, completeTodo]);
   
-  const onClickBack =(e,i) => {
+  const onClickBack = useCallback((e,i) => {
     e.preventDefault();
     const newCompleteTodo = [...completeTodo];
     newCompleteTodo.splice(i,1);
@@ -57,20 +55,7 @@ export const Page1 = () => {
     setCompleteTodo(newCompleteTodo);
     setArr(newArr);
     alert("あかん！やり直しや．．．");
-  };
-    
-  const competeStyle= {
-    textDecoration:"line-through red" 
-  }
-
-  const olStyle = {
-    listStylePosition: "inside",
-    listStyleType: "cjk-ideographic",
-    width: "60%",
-    textAlign: "justify",
-    padding: "auto",
-    margin: "auto"
-  }
+  },[arr, completeTodo]);
 
   const buttonStyle = {
     padding: "auto",
@@ -104,7 +89,7 @@ export const Page1 = () => {
         </form>
         <div>          
             <li>例）花に水をやる</li>
-          <ol style= {olStyle}>
+          <ol className="ol-style">
             {arr.map((val,i)=>(<li> {(val)} <button style={buttonStyle} onClick={(e) => onClickComplete(e,i)}>やったで！</button><button style={buttonStyle} onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
           </ol>
         </div>     
@@ -113,8 +98,8 @@ export const Page1 = () => {
       <div>
         <br />          
           <h2>もう終わったで！</h2>          
-          <ol style= {olStyle}>
-        {completeTodo.map((val,i)=>(<li style={competeStyle}>{(val)} <button style={buttonStyle} onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
+          <ol className="ol-style">
+        {completeTodo.map((val,i)=>(<li className="complete-style">{(val)} <button style={buttonStyle} onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
         </ol>
       </div>             
     </div>

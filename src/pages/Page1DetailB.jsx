@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BackButton } from "../components/BackButton";
@@ -15,22 +14,13 @@ export const Page1DetailB = () => {
     } if (state.arr) {
       setArr(state.arr);      
     }
-  },[state]);
-
-  const olStyle = {
-    listStylePosition: "inside",
-    listStyleType: "cjk-ideographic",
-    width: "40%",
-    textAlign: "justify",
-    padding: "auto",
-    margin: "auto"
-  }
+  },[state]);  
 
   return (
     <div className="container-style">
       <h1>もう終わったこと</h1>
       <br />
-      <ol style= {olStyle}>      
+      <ol className="ol-style">      
       {completeTodo.map((val)=>(<li> {(val) } </li>)) }
       </ol>
       <br />

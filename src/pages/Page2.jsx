@@ -1,13 +1,9 @@
-import React from "react";
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Link } from "react-router-dom";
 import { Message } from "../components/Message"
-import { useCallback } from "react"
 import { BackButton } from "../components/BackButton";
-import { useEffect } from "react";
 
 export const Page2 = () => {
-
   const url = "https://jsonplaceholder.typicode.com/todos/3/";  
   useEffect(() => {
     fetch(url)

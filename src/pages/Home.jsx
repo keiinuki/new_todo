@@ -1,19 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './PagesStyle.css';
 
 export const Home = () => {
   const history = useHistory();
   const onClick = () => {
     history.push("/page2");
-  }
-
+  };
   
   return (
     <div className="container-style">
       <h1>やらなあかんこと　ＨＯＭＥ</h1>
-
       <div>
         <Link to="/page1">「やらなあかんこと」はこちら</Link>
         <br />
