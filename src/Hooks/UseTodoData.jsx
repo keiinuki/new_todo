@@ -5,48 +5,51 @@ export const useTodoData = () => {
   const [word, setWord] = useState("");
   const [completeTodo, setCompleteTodo] = useState([]);  
   
-  const onChangeAdd = (e) => {
-    e.preventDefault() 
-    setWord( e.target.value )   
-  };
+  //const onChangeAdd = useCallback((e) => {
+    //e.preventDefault() 
+    //setWord( e.target.value )   
+  //},[]);
 
-  const onClickAdd = useCallback((e) => {
-    e.preventDefault()        
+  const onClickAdd = useCallback(() => {
+    //e.preventDefault()        
     const newArr = [...arr];
     newArr.push(word);
     setArr(newArr);
     setWord("");
+    console.log(arr);
     alert("やることにしたで！");
-  },[arr,word]);
+  },[]);
 
-  const onClickDelete = useCallback((e,i) => {
-    console.log(e)
-    e.preventDefault();    
+  const onClickDelete = useCallback((i) => {
+    //e.preventDefault();    
     const newArr = [...arr];
     newArr.splice(i,1);
     setArr(newArr);
+    console.log(arr);
     alert("やっぱりやめるわ．．．");
-  },[arr]);
+  },[]);
 
-  const onClickComplete = useCallback((e,i) => {
-    e.preventDefault();
+  const onClickComplete = useCallback((i) => {
+    //e.preventDefault();
     const newArr = [...arr];
     newArr.splice(i,1);
     const newCompleteTodo = [...completeTodo, arr[i]];
     setArr(newArr);
     setCompleteTodo(newCompleteTodo);
+    console.log(arr,completeTodo);
     alert("やったった！");
-  },[arr, completeTodo]);
+  },[]);
   
-  const onClickBack = useCallback((e,i) => {
-    e.preventDefault();
+  const onClickBack = useCallback((i) => {
+    //e.preventDefault();
     const newCompleteTodo = [...completeTodo];
     newCompleteTodo.splice(i,1);
     const newArr = [...arr, completeTodo[i]];      
     setCompleteTodo(newCompleteTodo);
     setArr(newArr);
+    console.log(arr,completeTodo);
     alert("あかん！やり直しや．．．");
-  },[arr, completeTodo]);
+  },[]);
 
-  return { arr, word, completeTodo, onChangeAdd, onClickAdd, onClickDelete, onClickComplete, onClickBack };
+  return { arr, word, completeTodo, onClickAdd, onClickDelete, onClickComplete, onClickBack };
 };

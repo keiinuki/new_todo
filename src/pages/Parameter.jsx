@@ -1,7 +1,7 @@
 import { Link, useParams, useLocation }  from "react-router-dom";
 import { BackButton } from "../components/BackButton";
-import axios from "axios";
-import { useEffect } from "react";
+//import axios from "axios";
+//import { useEffect } from "react";
 import { ContextComponent } from "../components/ContextComponent";
 
 export const Parameter = () => {
@@ -9,14 +9,13 @@ export const Parameter = () => {
   const { search } = useLocation();
   const query = new URLSearchParams(search);
   
-  const url = "https://jsonplaceholder.typicode.com/todos/30/";
-  useEffect(() => {
-    axios.get(url)
-    .then((response) => {
-      console.log(response);    
-    });
-  },[]);
-  console.log("1回だけ")  
+  //const url = "https://jsonplaceholder.typicode.com/todos/30/";
+  //useEffect(() => {
+    //axios.get(url)
+    //.then((response) => {
+    //  console.log(response);    
+    //});
+  //},[]);
 
   return (
     <div className="container-style">
