@@ -26,13 +26,11 @@ export const Page1 = () => {
     //onClickBack();
   //},[ onClickAdd, onClickDelete, onClickComplete, onClickBack]);
 
-  const onChangeAdd = (e) => {
-    e.preventDefault() 
+  const onChangeAdd = (e) => {    
     setWord( e.target.value )   
   };
 
-  const onClickAdd = useCallback((e) => {
-    e.preventDefault()        
+  const onClickAdd = useCallback(() => {         
     const newArr = [...arr];
     newArr.push(word);
     setArr(newArr);
@@ -40,17 +38,14 @@ export const Page1 = () => {
     alert("やることにしたで！");
   },[arr,word]);
 
-  const onClickDelete = useCallback((e,i) => {
-    console.log(e)
-    e.preventDefault();    
+  const onClickDelete = useCallback((i) => {
     const newArr = [...arr];
     newArr.splice(i,1);
     setArr(newArr);
     alert("やっぱりやめるわ．．．");
   },[arr]);
 
-  const onClickComplete = useCallback((e,i) => {
-    e.preventDefault();
+  const onClickComplete = useCallback((i) => {
     const newArr = [...arr];
     newArr.splice(i,1);
     const newCompleteTodo = [...completeTodo, arr[i]];
@@ -59,8 +54,7 @@ export const Page1 = () => {
     alert("やったった！");
   },[arr, completeTodo]);
   
-  const onClickBack = useCallback((e,i) => {
-    e.preventDefault();
+  const onClickBack = useCallback((i) => {
     const newCompleteTodo = [...completeTodo];
     newCompleteTodo.splice(i,1);
     const newArr = [...arr, completeTodo[i]];      
@@ -91,12 +85,12 @@ export const Page1 = () => {
         <h2>今からやるで！</h2>        
         <form>
           <input type="text" onChange={(e) => onChangeAdd(e)} value= {word} placeholder="何やるか決めた？"/>        
-          <button type= "button" style={buttonStyle} onClick={(e) => onClickAdd(e)} >やるで！</button>
+          <button type= "button" style={buttonStyle} onClick={() => onClickAdd()} >やるで！</button>
         </form>
         <div>          
             <li>例）{post}</li>
           <ol className="ol-style">            
-            {arr.map((val,i)=>(<li> {(val)} <button type= "button" style={buttonStyle} onClick={(e) => onClickComplete(e,i)}>やったで！</button><button type= "button" style={buttonStyle} onClick={(e) => onClickDelete(e,i)} >やめとくわ...</button></li>)) } 
+            {arr.map((val,i)=>(<li> {(val)} <button type= "button" style={buttonStyle} onClick={() => onClickComplete(i)}>やったで！</button><button type= "button" style={buttonStyle} onClick={() => onClickDelete(i)} >やめとくわ...</button></li>)) } 
           </ol>
         </div>     
       </div>
@@ -105,7 +99,7 @@ export const Page1 = () => {
         <br />          
           <h2>もう終わったで！</h2>          
           <ol className="ol-style">
-            {completeTodo.map((val,i)=>(<li className="complete-style">{(val)} <button type= "button" style={buttonStyle} onClick={(e) => onClickBack(e,i)}>やり直さな！</button></li>))}  
+            {completeTodo.map((val,i)=>(<li className="complete-style">{(val)} <button type= "button" style={buttonStyle} onClick={() => onClickBack(i)}>やり直さな！</button></li>))}  
         </ol>
       </div>             
     </div>
