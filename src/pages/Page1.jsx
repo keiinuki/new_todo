@@ -3,70 +3,50 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BackButton } from "../components/BackButton";
 import { useTodo } from "../Hooks/UseTodo";
-//import { useTodoData } from "../Hooks/UseTodoData";
 
 export const Page1 = () => {
-  //const { state } = useLocation();
-  //const [todoList, setTodoList] = useState([]);
+  const { state } = useLocation();
   const [word, setWord] = useState("");
-  //const [completeTodo, setCompleteTodo] = useState([]);  
   const [post, setPost] = useState("");
-  const { todoList, completeTodoList, addTodo, deleteTodo, completeTodo, backTodo } = useTodo();
-  //const { onClickAdd, onClickDelete, onClickComplete, onClickBack } = useTodoData();
-  
+  const { todoList, setTodoList, completeTodoList, setCompleteTodoList, addTodo, deleteTodo, completeTodo, backTodo } = useTodo();
+
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/todos/29/")
     .then((response) => {      
       setPost(response.data.title)
     });    
-  },[]);
-  
- // useEffect(() => {
-  //  addTodo();
- // },[]);
-
-  //useEffect(() => {
-    //onClickAdd();
-    //onClickDelete();
-    //onClickComplete();
-    //onClickBack();
-  //},[ onClickAdd, onClickDelete, onClickComplete, onClickBack]);
+  },[]);  
 
   const onChangeAdd = (e) => {    
     setWord( e.target.value )   
-  };
-  
+  };  
   const onClickAdd = () => {         
     addTodo(word);
     setWord("");
   };
-
-  const onClickDelete = () => {
-    deleteTodo();
+  const onClickDelete = (i) => {
+    deleteTodo(i);
   };
-
-  const onClickComplete =() => {
-    completeTodo();
-  };
-  
-  const onClickBack = () => {
-    backTodo();
-  };
+  const onClickComplete =(i) => {
+    completeTodo(i);
+  };  
+  const onClickBack = (i) => {
+    backTodo(i);
+  };  
+  useEffect(() => {
+    if (state) {          
+    setTodoList(state.todoList);    
+    } if (state) {
+    setCompleteTodoList(state.completeTodoList);
+    }
+  },[state]);
 
   const buttonStyle = {
     padding: "auto",
     margin: "2px",
     justifyContent: "float-right"
   }
-
-  //useEffect(() => {
-    //if (state) {          
-    //setTodoList(state.todoList);    
-    //} if (state) {
-    //setCompleteTodoList(state.completeTodoList);
-    //}
-  //},[state]);
-  
+    
   return (
   <div className="container-style">
     <h1>やらなあかんこと</h1>
@@ -83,8 +63,7 @@ export const Page1 = () => {
             {todoList.map((val,i)=>(<li> {(val)} <button type= "button" style={buttonStyle} onClick={() => onClickComplete(i)}>やったで！</button><button type= "button" style={buttonStyle} onClick={() => onClickDelete(i)} >やめとくわ...</button></li>)) } 
           </ol>
         </div>     
-      </div>
-        
+      </div>        
       <div>
         <br />          
           <h2>もう終わったで！</h2>          

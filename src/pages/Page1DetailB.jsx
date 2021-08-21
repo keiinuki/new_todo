@@ -9,7 +9,7 @@ export const Page1DetailB = () => {
   console.log(completeTodoList);  
   
   useEffect(() => {
-    if (state.completeTodo) {
+    if (state.completeTodoList) {
       setCompleteTodoList(state.completeTodoList);
     } if (state.todoList) {
       setTodoList(state.todoList);      

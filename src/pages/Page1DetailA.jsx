@@ -5,12 +5,10 @@ import { BackButton } from "../components/BackButton";
 export const Page1DetailA = () => {  
   const { state } = useLocation();
   const [todoList, setTodoList] = useState([]);
-  console.log(...todoList);
   const [completeTodoList, setCompleteTodoList] = useState([]);
-  console.log(completeTodoList);
 
   useEffect(() => {
-    if (state.arr) {
+    if (state.todoList) {
       setTodoList(state.todoList);      
     } if (state.completeTodoList) {
       setCompleteTodoList(state.completeTodoList);

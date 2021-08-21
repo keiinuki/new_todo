@@ -1,6 +1,7 @@
 import { useState,  useCallback } from "react";
 
 export const useTodo = () => {
+  //const { state } = useLocation();
   const [todoList, setTodoList] = useState([]);
   const [completeTodoList, setCompleteTodoList] = useState([]); 
 
@@ -20,10 +21,11 @@ export const useTodo = () => {
 
   const completeTodo = useCallback((i) => {
     const newTodoList = [...todoList];
-    newTodoList.splice(i,1);
-    const newCompleteTodoList = [...completeTodoList, todoList[i]];
+    newTodoList.splice(i,1);    
+    const newCompleteTodoList = [...completeTodoList, todoList[i]]; 
     setTodoList(newTodoList);
-    setCompleteTodoList(newCompleteTodoList);
+    setCompleteTodoList(newCompleteTodoList);        
+    console.log(i);
     alert("やったった！");
   },[todoList, completeTodoList]);
 
@@ -34,7 +36,7 @@ export const useTodo = () => {
     setCompleteTodoList(newCompleteTodoList);
     setTodoList(newTodoList);
     alert("あかん！やり直しや．．．");
-  },[todoList, completeTodoList]);
-
-  return { todoList, addTodo, deleteTodo, completeTodo, backTodo };
+  },[todoList, completeTodoList]);  
+    
+  return { todoList, setTodoList, completeTodoList, setCompleteTodoList, addTodo, deleteTodo, completeTodo, backTodo };
 };
