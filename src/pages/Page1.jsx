@@ -1,15 +1,17 @@
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { BackButton } from "../components/BackButton";
+import { useTodo } from "../Hooks/UseTodo";
 //import { useTodoData } from "../Hooks/UseTodoData";
 
 export const Page1 = () => {
   const { state } = useLocation();
-  const [arr, setArr] = useState([]);
+  //const [todoList, setTodoList] = useState([]);
   const [word, setWord] = useState("");
-  const [completeTodo, setCompleteTodo] = useState([]);  
+  //const [completeTodo, setCompleteTodo] = useState([]);  
   const [post, setPost] = useState("");
+  const { todoList, completeTodoList, addTodo, deleteTodo, completeTodo, backTodo } = useTodo();
   //const { onClickAdd, onClickDelete, onClickComplete, onClickBack } = useTodoData();
   
   useEffect(() => {
@@ -19,6 +21,10 @@ export const Page1 = () => {
     });    
   },[]);
   
+ // useEffect(() => {
+  //  addTodo();
+ // },[]);
+
   //useEffect(() => {
     //onClickAdd();
     //onClickDelete();
@@ -29,39 +35,23 @@ export const Page1 = () => {
   const onChangeAdd = (e) => {    
     setWord( e.target.value )   
   };
-
-  const onClickAdd = useCallback(() => {         
-    const newArr = [...arr];
-    newArr.push(word);
-    setArr(newArr);
-    setWord("");
-    alert("やることにしたで！");
-  },[arr,word]);
-
-  const onClickDelete = useCallback((i) => {
-    const newArr = [...arr];
-    newArr.splice(i,1);
-    setArr(newArr);
-    alert("やっぱりやめるわ．．．");
-  },[arr]);
-
-  const onClickComplete = useCallback((i) => {
-    const newArr = [...arr];
-    newArr.splice(i,1);
-    const newCompleteTodo = [...completeTodo, arr[i]];
-    setArr(newArr);
-    setCompleteTodo(newCompleteTodo);
-    alert("やったった！");
-  },[arr, completeTodo]);
   
-  const onClickBack = useCallback((i) => {
-    const newCompleteTodo = [...completeTodo];
-    newCompleteTodo.splice(i,1);
-    const newArr = [...arr, completeTodo[i]];      
-    setCompleteTodo(newCompleteTodo);
-    setArr(newArr);
-    alert("あかん！やり直しや．．．");
-  },[arr, completeTodo]);
+  const onClickAdd = () => {         
+    addTodo(word);
+    setWord("");
+  };
+
+  const onClickDelete = () => {
+    deleteTodo();
+  };
+
+  const onClickComplete =() => {
+    completeTodo();
+  };
+  
+  const onClickBack = () => {
+    backTodo();
+  };
 
   const buttonStyle = {
     padding: "auto",
@@ -69,13 +59,13 @@ export const Page1 = () => {
     justifyContent: "float-right"
   }
 
-  useEffect(() => {
-    if (state) {          
-      setArr(state.arr);    
-    } if (state) {
-      setCompleteTodo(state.completeTodo);
-    }
-  },[state]);
+  //useEffect(() => {
+    //if (state) {          
+    //setTodoList(state.todoList);    
+    //} if (state) {
+    //setCompleteTodoList(state.completeTodoList);
+    //}
+  //},[state]);
   
   return (
   <div className="container-style">
@@ -90,7 +80,7 @@ export const Page1 = () => {
         <div>          
             <li>例）{post}</li>
           <ol className="ol-style">            
-            {arr.map((val,i)=>(<li> {(val)} <button type= "button" style={buttonStyle} onClick={() => onClickComplete(i)}>やったで！</button><button type= "button" style={buttonStyle} onClick={() => onClickDelete(i)} >やめとくわ...</button></li>)) } 
+            {todoList.map((val,i)=>(<li> {(val)} <button type= "button" style={buttonStyle} onClick={() => onClickComplete(i)}>やったで！</button><button type= "button" style={buttonStyle} onClick={() => onClickDelete(i)} >やめとくわ...</button></li>)) } 
           </ol>
         </div>     
       </div>
@@ -99,15 +89,15 @@ export const Page1 = () => {
         <br />          
           <h2>もう終わったで！</h2>          
           <ol className="ol-style">
-            {completeTodo.map((val,i)=>(<li className="complete-style">{(val)} <button type= "button" style={buttonStyle} onClick={() => onClickBack(i)}>やり直さな！</button></li>))}  
+            {completeTodoList.map((val,i)=>(<li className="complete-style">{(val)} <button type= "button" style={buttonStyle} onClick={() => onClickBack(i)}>やり直さな！</button></li>))}  
         </ol>
       </div>             
     </div>
     <div>
       <br /><br />      
-      <Link to={{ pathname:"/page1/detailA", state: { arr, completeTodo } }}>「今からやること」を確認する</Link>
+      <Link to={{ pathname:"/page1/detailA", state: { todoList, completeTodoList } }}>「今からやること」を確認する</Link>
       <br />
-      <Link to={{ pathname:"/page1/detailB", state: { arr, completeTodo } }}>「もう終わったこと」を確認する</Link>
+      <Link to={{ pathname:"/page1/detailB", state: { todoList, completeTodoList } }}>「もう終わったこと」を確認する</Link>
       <br /><br /><br /> 
       <BackButton color="orange" />    
     </div>
