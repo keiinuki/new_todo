@@ -4,15 +4,15 @@ import { BackButton } from "../components/BackButton";
 
 export const Page1DetailB = () => {
   const { state } = useLocation();
-  const [arr, setArr] = useState([]);
-  const [completeTodo, setCompleteTodo] = useState([]);
-  console.log(completeTodo);  
+  const [todoList, setTodoList] = useState([]);
+  const [completeTodoList, setCompleteTodoList] = useState([]);
+  console.log(completeTodoList);  
   
   useEffect(() => {
     if (state.completeTodo) {
-      setCompleteTodo(state.completeTodo);
-    } if (state.arr) {
-      setArr(state.arr);      
+      setCompleteTodoList(state.completeTodoList);
+    } if (state.todoList) {
+      setTodoList(state.todoList);      
     }
   },[state]);  
 
@@ -21,10 +21,10 @@ export const Page1DetailB = () => {
       <h1>もう終わったこと</h1>
       <br />
       <ol className="ol-style">      
-      {completeTodo.map((val)=>(<li> {(val) } </li>)) }
+      {completeTodoList.map((val)=>(<li> {(val) } </li>)) }
       </ol>
       <br />
-      <Link to={{ pathname:"/page1", state: { arr, completeTodo } }}>「やらなあかんこと」に戻る</Link>
+      <Link to={{ pathname:"/page1", state: { todoList, completeTodoList } }}>「やらなあかんこと」に戻る</Link>
       <br />      
       <br />
       <BackButton color="blue" />

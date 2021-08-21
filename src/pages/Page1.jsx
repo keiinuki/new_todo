@@ -6,7 +6,7 @@ import { useTodo } from "../Hooks/UseTodo";
 //import { useTodoData } from "../Hooks/UseTodoData";
 
 export const Page1 = () => {
-  const { state } = useLocation();
+  //const { state } = useLocation();
   //const [todoList, setTodoList] = useState([]);
   const [word, setWord] = useState("");
   //const [completeTodo, setCompleteTodo] = useState([]);  
